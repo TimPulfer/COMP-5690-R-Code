@@ -18,7 +18,7 @@ server <- function(input, output) {
     q <- variables[5]
     dS <-  (input$muBirth * N) - (input$muDeath * S) - (input$betaSIR * ((S * I) / (N ^ q)))
     dI <-  ((input$betaSIR * S * I) / (N ^ q)) - (input$gammaSIR * I) - (input$muDeath * I)
-    dR <-  (input$gamma * I) - (input$muDeath * R)
+    dR <-  (input$gammaSIR * I) - (input$muDeath * R)
     dN <- dS + dI + dR
     list(c(dS, dI, dR, dN, q))
   }
