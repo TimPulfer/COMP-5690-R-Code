@@ -35,7 +35,7 @@ fluidPage(navbarPage(
                             
                             checkboxInput(
                               "muValue",
-                              label = "Vitial Dynamics",
+                              label = "Vital Dynamics",
                               value = FALSE
                             ),
                             
