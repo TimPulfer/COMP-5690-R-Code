@@ -8,7 +8,7 @@
 * **Timothy Pulfer** | *Lead Developer*
 * **Ashok Krishnamurthy** | *Template design and tips*
 
-## Bugs and comments
+## Feedback
 
 [Timothy Pulfer](mailto:tpulf154@mtroyal.ca)  
 
