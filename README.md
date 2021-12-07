@@ -2,4 +2,4 @@
  
 Contact: [Timothy Pulfer](mailto:akrishnamurthy@mtroyal.ca)  
 
-This interactive R Shiny app is maintained by Dr. Ashok Krishnamurthy. We welcome questions, insights, and feedback.
+This interactive R Shiny app is maintained by Timothy Pulfer. We welcome questions, insights, and feedback.
