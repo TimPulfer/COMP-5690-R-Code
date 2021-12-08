@@ -1,12 +1,17 @@
 # Compartmental Models of Epidemiology
  
- 
- Run the app by loading `app.R` and cliking `Run App`.
+## Overview
+
+Run the app by loading `app.R` and cliking `Run App`.
 
 ## Shiny app authors
 
 * **Timothy Pulfer** | *Lead Developer*
 * **Ashok Krishnamurthy** | *Template design and tips*
+
+## Features
+
+## References
 
 ## Feedback
 
