@@ -80,7 +80,7 @@ fluidPage(
                                 value = 1
                               ),
                               sliderInput(
-                                inputId = "betaSIR",
+                                inputId = "betaSIR_Stoc",
                                 label = "Transmission Rate (\\( \\beta\\))",
                                 min = 0,
                                 max = 0.5,
@@ -89,7 +89,7 @@ fluidPage(
                                 animate = animationOptions(interval = 100, pauseButton = NULL)
                               ),
                               sliderInput(
-                                inputId = "gammaSIR",
+                                inputId = "gammaSIR_Stoc",
                                 label = "Removal Rate  (\\( \\gamma\\))",
                                 min = 0,
                                 max = 0.5,
@@ -97,7 +97,7 @@ fluidPage(
                                 value = 0.12
                               ),
                               numericInput(
-                                inputId = "populationSIR",
+                                inputId = "populationSIR_Stoc",
                                 label = "Total Population (N)",
                                 value = 20000,
                                 min = 1,
@@ -105,7 +105,7 @@ fluidPage(
                                 step = 1,
                               ),
                               numericInput(
-                                inputId = "susceptibleSIR",
+                                inputId = "susceptibleSIR_Stoc",
                                 label = "Susceptible (S)",
                                 value = 19999,
                                 min = 1,
@@ -113,7 +113,7 @@ fluidPage(
                                 step = 1,
                               ),
                               numericInput(
-                                inputId = "infectedSIR",
+                                inputId = "infectedSIR_Stoc",
                                 label = "Infected (I)",
                                 value = 1,
                                 min = 1,
@@ -121,7 +121,7 @@ fluidPage(
                                 step = 1,
                               ),
                               numericInput(
-                                inputId = "recoveredSIR",
+                                inputId = "recoveredSIR_Stoc",
                                 label = "Recovered (R)",
                                 value = 0,
                                 min = 0,
@@ -439,6 +439,8 @@ fluidPage(
                    conditionalPanel(condition = "input.modelSelect == 'SIR'",
                                     plotOutput("plotSIR"),
                                     img(src='SIR.jpg', height = '100px')),
+                   # conditionalPanel(condition = "input.modelSelect == 'SIR-Stochastic'",
+                   #                  plotOutput("plotSIR_Stoc")),
                    conditionalPanel(condition = "input.modelSelect == 'SIRD'",
                                     plotOutput("plotSIRD"),
                                     img(src='SIRD.jpg', height = '200px')),

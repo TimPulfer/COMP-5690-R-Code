@@ -8,6 +8,89 @@ library(ggplot2)
 library(tidyverse)
 server <- function(input, output) {
   #############################################
+  #####      PLOT - SIR-Stochastic        #####
+  #############################################
+  # sir_Stoc_equations <- function(time, variables, parameters) {
+  #   S <- variables[1]
+  #   I <- variables[2]
+  #   R <- variables[3]
+  #   N <- variables[4]
+  #   chunksize <- variables[5]
+  #   
+  #   
+  #   et[1] = 0
+  #   i = 1
+  #   vectorlengths = chunksize
+  #   
+  #   while (I[i] > 0) 
+  #   { 
+  #     rSI = input$beta_Stoc*S[i]*I[i]
+  #     rIR = input$gamma_Stoc*I[i]
+  #     totalRate = rSI + rIR
+  #     et[i+1] = et[i] + rexp(1,totalRate)
+  #     
+  #     if (runif(1) < rSI/time)
+  #     {
+  #       S[i+1] = S[i]-1
+  #       I[i+1] = I[i]+1
+  #       R[i+1] = R[i]
+  #     } 
+  #     else 
+  #     {
+  #       S[i+1] = S[i]
+  #       I[i+1] = I[i]-1
+  #       R[i+1] = R[i]+1
+  #     }
+  #     
+  #     i = i + 1
+  #     
+  #     if (i == vectorlengths) 
+  #     {
+  #       vectorlengths = vectorlengths + chunksize
+  #       length(et) = vectorlengths
+  #       length(S) = vectorlengths
+  #       length(I) = vectorlengths
+  #       length(R) = vectorlengths
+  #     }
+  #   }
+  #   dN <- dS + dI + dR
+  #   list(c(dS, dI, dR, dN, q))
+  # }
+  # 
+  # sir_Stoc_values <- reactive({
+  #   req(input$timesteps, input$betaSIR_Stoc, input$gammaSIR_Stoc)
+  #   ode(
+  #     y = c(
+  #       S = input$susceptibleSIR_Stoc,
+  #       I = input$infectedSIR_Stoc,
+  #       R = input$recoveredSIR_Stoc,
+  #       N = input$populationSIR_Stoc,
+  #       chunksize = input$stochasticSIR
+  #     ),
+  #     times = seq(0, input$timesteps, by = 1),
+  #     func = sir_Stoc_equations,
+  #     parms = c(
+  #       beta = input$betaSIR_Stoc,
+  #       gamma = input$gammaSIR_Stoc
+  #     )
+  #   )
+  # })
+  # 
+  # output$plotSIR_Stoc <- renderPlot({
+  #   val <- as.data.frame(sir_Stoc_values())
+  #   S <- val[1]
+  #   I <- val[2]
+  #   R <- val[3]
+  #   
+  #   matplot(et,cbind(S,I,R),type='l',col=c('red','green','blue'),
+  #           lty=c(1,2,4),xlab='time',ylab=NA)
+  #   legend('topright', legend=c('S(t)', 'I(t)', 'R(t)'),
+  #          col=c('red','green','blue'),lty=c(1,2,4))
+  #   dev.new()
+  #   plot(S,I,type='l',xlab='S(t)',ylab='I(t)')
+  # })
+  
+  #############################################
   #####            PLOT - SIR             #####
   #############################################
   sir_equations <- function(time, variables, parameters) {
