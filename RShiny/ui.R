@@ -51,7 +51,7 @@ fluidPage(
                               sliderInput(
                                 #TODO: Adjust min/ Max
                                 inputId = "muBirth",
-                                label = "Birth Rate  (\\( \\mu_B\\))",
+                                label = "Birth Rate (\\( \\mu_B\\))",
                                 min = 0,
                                 max = 0.1,
                                 step = 0.0001,
@@ -60,7 +60,7 @@ fluidPage(
                               sliderInput(
                                 #TODO: Adjust min/ Max
                                 inputId = "muDeath",
-                                label = "Death Rate  (\\( \\mu_D\\))",
+                                label = "Death Rate due to Natural Causes (\\( \\mu_D\\))",
                                 min = 0,
                                 max = 0.1,
                                 step = 0.0001,
@@ -86,7 +86,6 @@ fluidPage(
                                 max = 0.5,
                                 step = 0.00001,
                                 value = 0.00003,
-                                animate = animationOptions(interval = 100, pauseButton = NULL)
                               ),
                               sliderInput(
                                 inputId = "gammaSIR_Stoc",
@@ -140,7 +139,6 @@ fluidPage(
                                 max = 0.5,
                                 step = 0.00001,
                                 value = 0.00003,
-                                animate = animationOptions(interval = 100, pauseButton = NULL)
                               ),
                               sliderInput(
                                 inputId = "gammaSIR",
@@ -194,7 +192,6 @@ fluidPage(
                                 max = 0.5,
                                 step = 0.00001,
                                 value = 0.00003,
-                                animate = animationOptions(interval = 100, pauseButton = NULL)
                               ),
                               sliderInput(
                                 inputId = "gammaSIRD",
@@ -265,7 +262,6 @@ fluidPage(
                                 max = 1,
                                 step = 0.01,
                                 value = 0.16,
-                                animate = animationOptions(interval = 10, pauseButton = NULL)
                               ),
                               sliderInput(
                                 #TODO: Adjust min/ Max
@@ -338,7 +334,6 @@ fluidPage(
                                 max = 1,
                                 step = 0.01,
                                 value = 0.16,
-                                animate = animationOptions(interval = 10, pauseButton = NULL)
                               ),
                               sliderInput(
                                 #TODO: Adjust min/ Max
@@ -435,7 +430,7 @@ fluidPage(
                tabsetPanel(
                  tabPanel(
                    title = "Plot",
-                   downloadButton(outputId = "downloadPlot", label = "Save PNG/JPEG"),
+                   #downloadButton(outputId = "downloadPlot", label = "Save PNG/JPEG"),
                    conditionalPanel(condition = "input.modelSelect == 'SIR'",
                                     plotOutput("plotSIR"),
                                     img(src='SIR.jpg', height = '100px')),
@@ -454,7 +449,7 @@ fluidPage(
                  
                  tabPanel(
                    title = "Phase Plane",
-                   downloadButton(outputId = "downloadPlane", label = "Save PNG/JPEG"),
+                   #downloadButton(outputId = "downloadPlane", label = "Save PNG/JPEG"),
                    conditionalPanel(condition = "input.modelSelect == 'SIR'",
                                     plotOutput("SIRPhasePlane")),
                    conditionalPanel(condition = "input.modelSelect == 'SIRD'",
@@ -489,7 +484,8 @@ fluidPage(
                            "Infectious $$\\frac{dI}{dt} = \\frac{\\beta S I}{N^q} - \\gamma I $$"
                          ),
                          helpText("Recovered $$\\frac{dR}{dt} = \\gamma I $$"),
-                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma}$$")
+                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\Upsilon} S(0)^q$$"),
+                         helpText("q-Value", br(), "$$ 1, frequency-dependent $$",br(),"$$ 0, density-dependent $$")
                        )
                      ),
                      conditionalPanel(
@@ -502,7 +498,8 @@ fluidPage(
                            "Infectious $$\\frac{dI}{dt} = \\frac{\\beta S I}{N^q} - \\gamma I - \\mu_D I$$"
                          ),
                          helpText("Recovered $$\\frac{dR}{dt} = \\gamma I - \\mu_D R $$"),
-                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma}$$")
+                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\Upsilon} S(0)^q$$"),
+                         helpText("q-Value", br(), "$$ 1, frequency-dependent $$",br(),"$$ 0, density-dependent $$")
                        )
                      )
                    ),
@@ -518,7 +515,8 @@ fluidPage(
                          ),
                          helpText("Recovered $$\\frac{dR}{dt} = \\gamma I $$"),
                          helpText("Dead $$\\frac{dD}{dt} = \\delta I $$"),
-                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma}$$")
+                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\Upsilon + \\delta} S(0)^q$$"),
+                         helpText("q-Value", br(), "$$ 1, frequency-dependent $$",br(),"$$ 0, density-dependent $$")
                        )
                      ),
                      conditionalPanel(
@@ -532,7 +530,8 @@ fluidPage(
                          ),
                          helpText("Recovered $$\\frac{dR}{dt} = \\gamma I - \\mu_D R $$"),
                          helpText("Dead $$\\frac{dD}{dt} = \\delta I $$"),
-                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma}$$")
+                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\Upsilon + \\delta} S(0)^q$$"),
+                         helpText("q-Value", br(), "$$ 1, frequency-dependent $$",br(),"$$ 0, density-dependent $$")
                        )
                      )
                    ),
@@ -546,7 +545,8 @@ fluidPage(
                          helpText("Exposed $$\\frac{dE}{dt} = \\beta \\frac{ S I}{N^q} - \\gamma E $$"),
                          helpText("Infectious $$\\frac{dI}{dt} = \\gamma E - \\sigma I $$"),
                          helpText("Recovered $$\\frac{dR}{dt} = \\sigma I $$"),
-                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma}$$")
+                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma}$$"),
+                         helpText("q-Value", br(), "$$ 1, frequency-dependent $$",br(),"$$ 0, density-dependent $$")
                        )
                      ),
                      conditionalPanel(
@@ -558,7 +558,8 @@ fluidPage(
                          helpText("Exposed $$\\frac{dE}{dt} = \\beta \\frac{ S I}{N^q} - \\gamma E - \\mu_D E$$"),
                          helpText("Infectious $$\\frac{dI}{dt} = \\gamma E - \\sigma I - \\mu_D I $$"),
                          helpText("Recovered $$\\frac{dR}{dt} = \\sigma I - \\mu_D R $$"),
-                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma}$$")
+                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma}$$"),
+                         helpText("q-Value", br(), "$$ 1, frequency-dependent $$",br(),"$$ 0, density-dependent $$")
                        )
                      )
                    ),
@@ -573,7 +574,8 @@ fluidPage(
                          helpText("Infectious $$\\frac{dI}{dt} = \\gamma E - \\sigma I - \\delta I $$"),
                          helpText("Recovered $$\\frac{dR}{dt} = \\sigma I $$"),
                          helpText("Dead $$ \\frac{dD}{dt} = \\delta I $$"),
-                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma}$$")
+                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma}$$"),
+                         helpText("q-Value", br(), "$$ 1, frequency-dependent $$",br(),"$$ 0, density-dependent $$")
                        )
                      ),
                      conditionalPanel(
@@ -586,7 +588,8 @@ fluidPage(
                          helpText("Infectious $$\\frac{dI}{dt} = \\gamma E - \\sigma I -  \\delta I- \\mu_D I $$"),
                          helpText("Recovered $$\\frac{dR}{dt} = \\sigma I - \\mu_D R $$"),
                          helpText("Dead $$ \\frac{dD}{dt} = \\delta I $$"),
-                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma}$$")
+                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma}$$"),
+                         helpText("q-Value", br(), "$$ 1, frequency-dependent $$",br(),"$$ 0, density-dependent $$")
                        )
                      )
                    ),
@@ -605,7 +608,7 @@ fluidPage(
     p("Mount Royal University,"),
     p("Department of Mathematics & Computing,"),
     p("Calgary, AB, Canada"),
-    p("https://github.com/TimPulfer/COMP-5690-R-Code"),
+    p("Github ",a("link", href="https://github.com/TimPulfer/COMP-5690-R-Code", target="_blank")),
     br(),
 
     p(span("Ashok Krishnamurthy, PhD", style = "font-weight:bold")),

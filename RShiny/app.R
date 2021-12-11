@@ -18,5 +18,5 @@ library(tidyverse)
 
 shinyApp(
   ui= source('ui.r',local=TRUE),
-  server=source('server.r')
+  server=source('server.r',session)
 )

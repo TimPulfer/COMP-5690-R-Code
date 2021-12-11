@@ -6,7 +6,18 @@ library(shinyWidgets)
 library(deSolve)
 library(ggplot2)
 library(tidyverse)
-server <- function(input, output) {
+server <- function(input, output,session) {
+  
+  #Reset vital dynamics when not checked off
+  observe({
+    input$muValue
+    updateSliderInput(session, "muBirth", value =0)
+  })
+  observe({
+    input$muValue
+    updateSliderInput(session, "muDeath", value =0)
+  })
+  
   #############################################
   #####      PLOT - SIR-Stochastic        #####
   #############################################
