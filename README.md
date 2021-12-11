@@ -2,7 +2,7 @@
  
 ## Overview
 
-Run the app by loading `app.R` and cliking `Run App`.
+Run the app by loading `app.R` and clicking `Run App`.
 
 ## Shiny app authors
 
