@@ -147,6 +147,7 @@ server <- function(input, output,session) {
             axis.title.y = element_text(size=16,face="bold")) +
       ggtitle("SIR Epidemic Model") +
       theme(plot.title = element_text(size = 22, face="bold")) +
+      theme(legend.position="bottom") +
       ylab("Number of People") +
       xlab("Time") +
       scale_x_continuous(expand = c(0, 0)) + 
@@ -166,6 +167,7 @@ server <- function(input, output,session) {
       theme(axis.line = element_line(color="black"), axis.text=element_text(size=14),
             axis.title.x = element_text(size=16,face="bold"), 
             axis.title.y = element_text(size=16,face="bold")) +
+      theme(legend.position="bottom") +
       ggtitle("SIR Phase Plane") +
       theme(plot.title = element_text(size = 22,face="bold")) +
       ylab("Infected (I)") +
@@ -232,6 +234,7 @@ server <- function(input, output,session) {
             axis.title.y = element_text(size=16,face="bold")) +
       ggtitle("SIRD Epidemic Model") +
       theme(plot.title = element_text(size = 22,face="bold")) +
+      theme(legend.position="bottom") +
       ylab("Number of People") +
       xlab("Time") +
       scale_x_continuous(expand = c(0, 0)) + 
@@ -252,6 +255,7 @@ server <- function(input, output,session) {
       theme(axis.line = element_line(color="black"), axis.text=element_text(size=14),
             axis.title.x = element_text(size=16,face="bold"), 
             axis.title.y = element_text(size=16,face="bold")) +
+      theme(legend.position="bottom") +
       ggtitle("SIRD Phase Plane") +
       theme(plot.title = element_text(size = 22,face = "bold")) +
       ylab("Infected (I)") +
@@ -317,6 +321,7 @@ server <- function(input, output,session) {
       theme(axis.line = element_line(color="black"),
             axis.title.x = element_text(size=16,face="bold"), 
             axis.title.y = element_text(size=16,face="bold")) +
+      theme(legend.position="bottom") +
       theme(plot.title = element_text(size = 22,face = "bold"), axis.text=element_text(size=14)) +
       ylab("Number of People") +
       xlab("Time") +
@@ -340,6 +345,7 @@ server <- function(input, output,session) {
             axis.title.y = element_text(size=16,face="bold")) +
       ggtitle("SEIR Phase Plane") +
       theme(plot.title = element_text(size = 22, face="bold")) +
+      theme(legend.position="bottom") +
       ylab("Infected (I)") +
       xlab("Susceptible (S)")+
       scale_x_continuous(expand = c(0, 0)) + 
@@ -407,6 +413,7 @@ server <- function(input, output,session) {
             axis.title.x = element_text(size=16,face="bold"), 
             axis.title.y = element_text(size=16,face="bold")) +
       theme(plot.title = element_text(size = 22, face= "bold")) +
+      theme(legend.position="bottom") +
       ylab("Number of People") +
       xlab("Time") +
       scale_x_continuous(expand = c(0, 0)) + 
@@ -428,6 +435,7 @@ server <- function(input, output,session) {
       theme(axis.line = element_line(color="black"), axis.text=element_text(size=14),
             axis.title.x = element_text(size=16,face="bold"), 
             axis.title.y = element_text(size=16,face="bold")) +
+      theme(legend.position="bottom") +
       ggtitle("SEIRD Phase Plane") +
       theme(plot.title = element_text(size = 22, face="bold")) +
       ylab("Infected (I)") +
