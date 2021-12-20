@@ -1,9 +1,9 @@
-# Compartmental Models of Epidemiology
+# episim: Compartmental Models of Epidemiology
 
 ## Shiny app authors
 
-* **Timothy Pulfer** | *Lead Developer*
-* **Ashok Krishnamurthy** | *Template design and tips*
+* **Timothy Pulfer** | *Lead Developer and maintainer*
+* **Ashok Krishnamurthy** | *Template design, model structure and coding tips*
  
 ## Overview
 
