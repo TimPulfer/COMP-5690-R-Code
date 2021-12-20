@@ -22,8 +22,8 @@ fluidPage(
                             radioButtons(
                               inputId = "modelSelect",
                               label = ("Epidemic Model"),
-                              choiceValues = list("SIR", "SIRD","SEIR","SEIRD", "SIR-Stochastic"),
-                              choiceNames = list("SIR", "SIRD", "SEIR", "SEIRD","SIR-Stochastic"),
+                              choiceValues = list("SIR", "SIRD","SEIR","SEIRD"),#, "SIR-Stochastic"),
+                              choiceNames = list("SIR", "SIRD", "SEIR", "SEIRD"),#,"SIR-Stochastic"),
                               inline = TRUE,
                               width = "1000px"
                             ),
@@ -483,7 +483,7 @@ fluidPage(
                            "Infectious $$\\frac{dI}{dt} = \\frac{\\beta S I}{N^q} - \\gamma I $$"
                          ),
                          helpText("Recovered $$\\frac{dR}{dt} = \\gamma I $$"),
-                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\Upsilon} S(0)^q$$"),
+                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma} S(0)^q$$"),
                          helpText("q-Value", br(), "$$ 1, frequency-dependent $$",br(),"$$ 0, density-dependent $$")
                        )
                      ),
@@ -497,7 +497,7 @@ fluidPage(
                            "Infectious $$\\frac{dI}{dt} = \\frac{\\beta S I}{N^q} - \\gamma I - \\mu_D I$$"
                          ),
                          helpText("Recovered $$\\frac{dR}{dt} = \\gamma I - \\mu_D R $$"),
-                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\Upsilon} S(0)^q$$"),
+                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma} S(0)^q$$"),
                          helpText("q-Value", br(), "$$ 1, frequency-dependent $$",br(),"$$ 0, density-dependent $$")
                        )
                      )
@@ -514,7 +514,7 @@ fluidPage(
                          ),
                          helpText("Recovered $$\\frac{dR}{dt} = \\gamma I $$"),
                          helpText("Dead $$\\frac{dD}{dt} = \\delta I $$"),
-                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\Upsilon + \\delta} S(0)^q$$"),
+                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma + \\delta} S(0)^q$$"),
                          helpText("q-Value", br(), "$$ 1, frequency-dependent $$",br(),"$$ 0, density-dependent $$")
                        )
                      ),
@@ -529,7 +529,7 @@ fluidPage(
                          ),
                          helpText("Recovered $$\\frac{dR}{dt} = \\gamma I - \\mu_D R $$"),
                          helpText("Dead $$\\frac{dD}{dt} = \\delta I $$"),
-                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\Upsilon + \\delta} S(0)^q$$"),
+                         helpText("Reproductive ratio $$R_0 =  \\frac{\\beta}{\\gamma + \\delta} S(0)^q$$"),
                          helpText("q-Value", br(), "$$ 1, frequency-dependent $$",br(),"$$ 0, density-dependent $$")
                        )
                      )
