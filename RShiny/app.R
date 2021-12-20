@@ -8,7 +8,6 @@
 #                   user input.
 
 library(shiny)
-library(shiny)
 library(shinyjs)
 library(shinyhelper)
 library(shinyWidgets)

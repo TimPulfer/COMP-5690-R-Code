@@ -1,5 +1,4 @@
 library(shiny)
-library(shiny)
 library(shinyjs)
 library(shinyhelper)
 library(shinyWidgets)
@@ -7,8 +6,8 @@ library(deSolve)
 library(ggplot2)
 library(tidyverse)
 
-maxPopulation = 100000
-maxTimeSteps = 1000
+maxPopulation = 900000000
+
 fluidPage(
   
   div(
@@ -417,7 +416,7 @@ fluidPage(
                             label = "Number of Timesteps (m)",
                             value = 50,
                             min = 1,
-                            max = maxTimeSteps,
+                            max = 1000,
                             step = 1,
                           ),
              ),

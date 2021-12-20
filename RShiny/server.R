@@ -1,5 +1,4 @@
 library(shiny)
-library(shiny)
 library(shinyjs)
 library(shinyhelper)
 library(shinyWidgets)
@@ -16,6 +15,108 @@ server <- function(input, output,session) {
   observe({
     input$muValue
     updateSliderInput(session, "muDeath", value =0)
+  })
+  
+  observeEvent(input$qValue,{
+    # SIR - TMA
+    if((input$qValue == "1")&&(input$modelSelect == "SIR"))
+    {
+      updateSliderInput(session, "betaSIR", value = 0.42)
+      updateSliderInput(session, "gammaSIR", value = 0.08)
+      updateNumericInput(session, "populationSIR", value = 10000)
+      updateNumericInput(session, "susceptibleSIR", value = 6000)
+      updateNumericInput(session, "infectedSIR", value = 4000)
+      updateNumericInput(session, "recoveredSIR", value = 0)
+      updateNumericInput(session, "timesteps", value = 25)
+    }
+    # SIR - SMA
+    if((input$qValue == "0")&&(input$modelSelect == "SIR"))
+    {
+      updateSliderInput(session, "betaSIR", value = 0.00003)
+      updateSliderInput(session, "gammaSIR", value = 0.12)
+      updateNumericInput(session, "populationSIR", value = 20000)
+      updateNumericInput(session, "susceptibleSIR", value = 19999)
+      updateNumericInput(session, "infectedSIR", value = 1)
+      updateNumericInput(session, "recoveredSIR", value = 0)
+      updateNumericInput(session, "timesteps", value = 50)
+    }
+    # SIRD - TMA
+    if((input$qValue == "1")&&(input$modelSelect == "SIRD"))
+    {
+      updateSliderInput(session, "betaSIRD", value = 0.35)
+      updateSliderInput(session, "gammaSIRD", value = 0.07)
+      updateSliderInput(session, "deltaSIRD", value = 0.05)
+      updateNumericInput(session, "populationSIRD", value = 10000)
+      updateNumericInput(session, "susceptibleSIRD", value = 4000)
+      updateNumericInput(session, "infectedSIRD", value = 3500)
+      updateNumericInput(session, "recoveredSIRD", value = 500)
+      updateNumericInput(session, "timesteps", value = 25)
+    }
+    #SIRD - PMA
+    if((input$qValue == "0")&&(input$modelSelect == "SIRD"))
+    {
+      updateSliderInput(session, "betaSIRD", value = 0.00003)
+      updateSliderInput(session, "gammaSIRD", value = 0.015)
+      updateSliderInput(session, "deltaSIRD", value = 0.08)
+      updateNumericInput(session, "populationSIRD", value = 20000)
+      updateNumericInput(session, "susceptibleSIRD", value = 19999)
+      updateNumericInput(session, "infectedSIRD", value = 1)
+      updateNumericInput(session, "recoveredSIRD", value = 0)
+      updateNumericInput(session, "timesteps", value = 50)
+    }
+    #SEIR - TMA
+    if((input$qValue == "1")&&(input$modelSelect == "SEIR"))
+    {
+      updateSliderInput(session, "beta", value = 0.75)
+      updateSliderInput(session, "gamma", value = 0.18)
+      updateSliderInput(session, "sigma", value = 0.048)
+      updateNumericInput(session, "population", value = 4000)
+      updateNumericInput(session, "susceptible", value = 2000)
+      updateNumericInput(session, "exposed", value = 500)
+      updateNumericInput(session, "infected", value = 1500)
+      updateNumericInput(session, "recovered", value = 0)
+      updateNumericInput(session, "timesteps", value = 20)
+    }
+    # SEIR - PMA
+    if((input$qValue == "0")&&(input$modelSelect == "SEIR"))
+    {
+      updateSliderInput(session, "beta", value = 0.16)
+      updateSliderInput(session, "gamma", value = 0.045)
+      updateSliderInput(session, "sigma", value = 0.11)
+      updateNumericInput(session, "population", value = 53)
+      updateNumericInput(session, "susceptible", value = 50)
+      updateNumericInput(session, "exposed", value = 3)
+      updateNumericInput(session, "infected", value = 0)
+      updateNumericInput(session, "recovered", value = 0)
+      updateNumericInput(session, "timesteps", value = 25)
+    }
+    #SEIRD - TMA
+    if((input$qValue == "1")&&(input$modelSelect == "SEIRD"))
+    {
+      updateSliderInput(session, "betaSEIRD", value = 0.36)
+      updateSliderInput(session, "gammaSEIRD", value = 0.45)
+      updateSliderInput(session, "sigmaSEIRD", value = 0.068)
+      updateSliderInput(session, "deltaSEIRD", value = 0.059)
+      updateNumericInput(session, "populationSEIRD", value = 10000)
+      updateNumericInput(session, "susceptibleSEIRD", value = 4000)
+      updateNumericInput(session, "exposedSEIRD", value = 3500)
+      updateNumericInput(session, "infectedSEIRD", value = 1500)
+      updateNumericInput(session, "recoveredSEIRD", value = 1000)
+      updateNumericInput(session, "timesteps", value = 20)
+    }
+    if((input$qValue == "0")&&(input$modelSelect == "SEIRD"))
+    {
+      updateSliderInput(session, "betaSEIRD", value = 0.16)
+      updateSliderInput(session, "gammaSEIRD", value = 0.045)
+      updateSliderInput(session, "sigmaSEIRD", value = 0.11)
+      updateSliderInput(session, "deltaSEIRD", value = 0.08)
+      updateNumericInput(session, "populationSEIRD", value = 53)
+      updateNumericInput(session, "susceptibleSEIRD", value = 50)
+      updateNumericInput(session, "exposedSEIRD", value = 3)
+      updateNumericInput(session, "infectedSEIRD", value = 0)
+      updateNumericInput(session, "recoveredSEIRD", value = 0)
+      updateNumericInput(session, "timesteps", value = 50)
+    }
   })
   
   #############################################
@@ -168,7 +269,7 @@ server <- function(input, output,session) {
             axis.title.x = element_text(size=16,face="bold"), 
             axis.title.y = element_text(size=16,face="bold")) +
       theme(legend.position="bottom") +
-      ggtitle("SIR Phase Plane") +
+      ggtitle("SI Phase Plane") +
       theme(plot.title = element_text(size = 22,face="bold")) +
       ylab("Infected (I)") +
       scale_x_continuous(expand = c(0, 0)) + 
@@ -199,7 +300,7 @@ server <- function(input, output,session) {
     dI <- (input$betaSIRD *((S * I) / (N ^ q))) - (input$gammaSIRD * I) - (input$deltaSIRD * I) - (input$muDeath * I)
     dR <- (input$gammaSIRD * I) - (input$muDeath * R)
     dD <- (input$deltaSIRD * I)
-    dN <- dS + dI + dR + dD
+    dN <- dS + dI + dR
     list(c(dS, dI, dR, dD, dN, q))
   }
   
@@ -256,7 +357,7 @@ server <- function(input, output,session) {
             axis.title.x = element_text(size=16,face="bold"), 
             axis.title.y = element_text(size=16,face="bold")) +
       theme(legend.position="bottom") +
-      ggtitle("SIRD Phase Plane") +
+      ggtitle("SI Phase Plane") +
       theme(plot.title = element_text(size = 22,face = "bold")) +
       ylab("Infected (I)") +
       scale_x_continuous(expand = c(0, 0)) + 
@@ -373,10 +474,10 @@ server <- function(input, output,session) {
     q <- variables[7]
     dS <- (input$muBirth * N) - (input$muDeath * S) - (input$betaSEIRD * ((S * I) / (N ^ q)))
     dE <- (input$beta * ((S * I) / (N ^ q))) - (input$gammaSEIRD * E) -(input$muDeath * E)
-    dI <- (input$gammaSEIRD * E) - (I * input$sigmaSEIRD) - (input$deltaSEIRD) - (input$muDeath * I)
+    dI <- (input$gammaSEIRD * E) - (I * input$sigmaSEIRD) - (input$deltaSEIRD * I) - (input$muDeath * I)
     dR <- (I * input$sigma) - (input$muDeath * R)
     dD <- (input$deltaSEIRD * I)
-    dN <- dS + dE + dI + dR + dD
+    dN <- dS + dE + dI + dR
     list(c(dS, dE, dI, dR, dD, dN, q))
   }
   
