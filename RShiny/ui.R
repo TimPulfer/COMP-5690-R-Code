@@ -22,8 +22,8 @@ fluidPage(
                             radioButtons(
                               inputId = "modelSelect",
                               label = ("Epidemic Model"),
-                              choiceValues = list("SIR", "SIRD","SEIR","SEIRD"),#, "SIR-Stochastic"),
-                              choiceNames = list("SIR", "SIRD", "SEIR", "SEIRD"),#,"SIR-Stochastic"),
+                              choiceValues = list("SIR", "SIRD","SEIR","SEIRD", "SIR-Stochastic"),
+                              choiceNames = list("SIR", "SIRD", "SEIR", "SEIRD", "SIR-Stochastic"),
                               inline = TRUE,
                               width = "1000px"
                             ),
@@ -76,7 +76,7 @@ fluidPage(
                                 min = 1,
                                 max = 100,
                                 step = 1,
-                                value = 1
+                                value = 50
                               ),
                               sliderInput(
                                 inputId = "betaSIR_Stoc",
@@ -97,7 +97,7 @@ fluidPage(
                               numericInput(
                                 inputId = "populationSIR_Stoc",
                                 label = "Total Population (N)",
-                                value = 20000,
+                                value = 1000,
                                 min = 1,
                                 max = maxPopulation,
                                 step = 1,
@@ -105,7 +105,7 @@ fluidPage(
                               numericInput(
                                 inputId = "susceptibleSIR_Stoc",
                                 label = "Susceptible (S)",
-                                value = 19999,
+                                value = 990,
                                 min = 1,
                                 max = maxPopulation,
                                 step = 1,
@@ -113,7 +113,7 @@ fluidPage(
                               numericInput(
                                 inputId = "infectedSIR_Stoc",
                                 label = "Infected (I)",
-                                value = 1,
+                                value = 10,
                                 min = 1,
                                 max = maxPopulation,
                                 step = 1,
@@ -125,7 +125,7 @@ fluidPage(
                                 min = 0,
                                 max = maxPopulation,
                                 step = 1,
-                              ),
+                              )
                             ),
                             
                             conditionalPanel(
@@ -433,8 +433,8 @@ fluidPage(
                    conditionalPanel(condition = "input.modelSelect == 'SIR'",
                                     plotOutput("plotSIR"),
                                     img(src='SIR.jpg', height = '100px')),
-                   # conditionalPanel(condition = "input.modelSelect == 'SIR-Stochastic'",
-                   #                  plotOutput("plotSIR_Stoc")),
+                   conditionalPanel(condition = "input.modelSelect == 'SIR-Stochastic'",
+                                    plotOutput("plotSIR_Stoc")),
                    conditionalPanel(condition = "input.modelSelect == 'SIRD'",
                                     plotOutput("plotSIRD"),
                                     img(src='SIRD.jpg', height = '200px')),
