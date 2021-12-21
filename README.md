@@ -4,7 +4,11 @@
 
 * **Timothy Pulfer** | *Lead Developer and maintainer*
 * **Ashok Krishnamurthy** | *Template design, model structure and coding tips*
- 
+
+## Persistent Link
+
+https://comp5690.shinyapps.io/episim/
+
 ## Overview
 
 Run the app by loading `app.R` and clicking `Run App`.
